@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf8 -*-"
 
-import boto_3
+import boto3
 from botocore.client import ClientError
 import requests
 import subprocess
@@ -13,12 +13,12 @@ user_data = 'http://169.254.169.254/latest/user-data'
 meta_data = 'http://169.254.169.254/latest/meta-data'
 ec2InsDatafile = 'ec2InsDatafile'
 ec2_params = {
-    'Instance ID': 'instance-id',
+    'Instance ID': i-aaabbb,
     'Reservation ID': 'reservation-id'
-    'Public IP': 'public_ipv4',
+    'Public IP': 8.8.8.8,
     'Public Hostname': 'public_hostname',
-    'Private IP':'local-ipv4'
-    'Security Groups':'security-groups',
+    'Private IP': 192.168.0.1'
+    'Security Groups': [one, two , three],
     'AMI ID': 'ami_id'
 }
 
@@ -45,12 +45,10 @@ for param, value in ec2_params.items():
 
 #Getting  OS related if from system files
 
-os_vers = "grep '^VERSION=' /etc/os-release |cut -d'=' -f2"
-os_name = "grep '^NAME' /etc/os-release |cut -d'=' -f2"
-os_name_val ='OS NAME: '+ os.popen(os_name).read().rstrip()
-os_vers_val ='OS VERSION: '+ os.popen(os_vers).read().rstrip()
-os_usrs = "grep -E 'bash|sh' /etc/passwd |awk -F : '{print $1}|xargs echo  "
-os_usrs_val = 'Login able users: '+ os.popen(os_usrs).read().rstrip()
+os_name = os.popen("grep '^NAME' /etc/os-release | cut -d'=' -f2").read().strip()
+os_version = os.popen("grep '^VERSION=' /etc/os-release | cut -d'=' -f2").read().strip()
+os_users = os.popen("grep -E 'bash|sh' /etc/passwd | awk -F: '{print $1}' | xargs echo").read().strip()
+
 try:
     fh.write(os_name_val+'\r\n')
     fh.write(os_vers_val+'\r\n')
