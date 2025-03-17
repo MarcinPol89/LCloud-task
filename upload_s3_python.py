@@ -72,7 +72,7 @@ except Exception as e:
     print(f"SSH connection error: {e}")
 
 # Upload file to S3 storage
-s3_bucket_name = 'applicant-task/r4p17/'
+s3_bucket_name = 'applicant-task'
 s3_conn = boto3.client('s3')
 
 try:
@@ -89,6 +89,6 @@ try:
             Body=fh.read()
         )
 
-    print(f"File successfully uploaded to {s3_bucket_name} as system_info_{instance_id}.txt")
+    print(f"File successfully uploaded to s3://{s3_bucket_name}/r4p17/ as system_info_{instance_id}.txt")
 except ClientError as e:
     print(f"S3 upload error: {e}")
