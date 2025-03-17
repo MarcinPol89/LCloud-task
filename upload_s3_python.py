@@ -15,10 +15,10 @@ ec2InsDatafile = 'ec2InsDatafile'
 # Corrected EC2 parameters dictionary
 ec2_params = {
     'Instance ID': 'instance-id',
-    'Reservation ID': 'reservation-id'
+    'Reservation ID': 'reservation-id',
     'Public IP': 'public_ipv4',
     'Public Hostname': 'public_hostname',
-    'Private IP':'local-ipv4'
+    'Private IP':'local-ipv4',
     'Security Groups':'security-groups',
     'AMI ID': 'ami_id'
 }
@@ -72,7 +72,7 @@ except Exception as e:
     print(f"SSH connection error: {e}")
 
 # Upload file to S3 storage
-s3_bucket_name = 'new-bucket-e05ab0e0'
+s3_bucket_name = 'applicant-task/r4p17/'
 s3_conn = boto3.client('s3')
 
 try:
